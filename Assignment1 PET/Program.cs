@@ -15,9 +15,9 @@ class VirtualPet            //creating a class for defining datatypes and variab
     {
         Type = type;
         Name = name;
-        Hunger = 6;
-        Happiness = 6;
-        Health = 6;
+        Hunger = 5;
+        Happiness = 5;
+        Health = 5;
     }
 
     public void Feed()
@@ -35,12 +35,30 @@ class VirtualPet            //creating a class for defining datatypes and variab
         Hunger = Math.Min(10, Hunger + 1);
         DisplayStatus();
     }
-    public void DisplayWelcomeMessage()
+    public void Rest()
     {
-        Console.WriteLine($"Welcome to the Virtual Pet Simulator!");
-        Console.WriteLine($"You have a new pet: {Name} the {Type}.");
+        Console.WriteLine($"{Name} is resting.");
+        Health = Math.Min(10, Health + 2);
+        Happiness = Math.Max(0, Happiness - 1);
+        DisplayStatus();
+    }
+    public void DisplayStatus()
+    {
+        Console.WriteLine($"Status of {Name} ({Type}): Hunger - {Hunger}, Happiness - {Happiness}, Health - {Health}");
+        CheckStatus();
     }
 
+    public void CheckStatus()
+    {
+        if (Hunger <= 2 || Happiness <= 2 || Health <= 2)
+        {
+            Console.WriteLine("Warning: Pet is not feeling well. Please take care!");
+        }
+        else if (Hunger >= 8 || Happiness >= 8 || Health >= 8)
+        {
+            Console.WriteLine("Warning: Pet is extremely happy or full. Be cautious!");
+        }
+    }
 }
 
 class Program
