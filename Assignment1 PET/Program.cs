@@ -15,7 +15,7 @@ class VirtualPet            //creating a class for defining datatypes and variab
     {
         Type = type;
         Name = name;
-        Hunger = 5;
+        Hunger = 5;                                       //assigning the values
         Happiness = 5;
         Health = 5;
     }
@@ -23,7 +23,7 @@ class VirtualPet            //creating a class for defining datatypes and variab
     public void Feed()
     {
         Console.WriteLine($"{Name} is being fed.");
-        Hunger = Math.Max(0, Hunger - 2);
+        Hunger = Math.Max(0, Hunger - 2);                  //certain condition for Feed
         Health = Math.Min(10, Health + 1);
         DisplayStatus();
     }
@@ -31,14 +31,14 @@ class VirtualPet            //creating a class for defining datatypes and variab
     public void Play()
     {
         Console.WriteLine($"Name is playing.");
-        Happiness = Math.Min(10, Happiness + 2);
+        Happiness = Math.Min(10, Happiness + 2);           //certain condition for Play
         Hunger = Math.Min(10, Hunger + 1);
         DisplayStatus();
     }
     public void Rest()
     {
         Console.WriteLine($"{Name} is resting.");
-        Health = Math.Min(10, Health + 2);
+        Health = Math.Min(10, Health + 2);                  //certain condition for Rest
         Happiness = Math.Max(0, Happiness - 1);
         DisplayStatus();
     }
@@ -65,9 +65,8 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Virtual Pet Simulator - Pet Creation\n");
-
-        Console.Write("Enter the type of your Pet (e.g.,cat,dog,bunny): ");
+        Console.WriteLine("Welcome to the Virtual Pet Simulator!");
+        Console.Write("Enter the type of your pet (e.g., cat, dog, rabbit): ");
         string petType = Console.ReadLine();
 
         Console.Write("Enter your pet's name: ");
@@ -75,6 +74,7 @@ class Program
 
         VirtualPet pet = new VirtualPet(petType, petName);
 
-        pet.DisplayWelcomeMessage();
+        Console.WriteLine($"Welcome, {pet.Name} the {pet.Type}!");
     }
+
 }
