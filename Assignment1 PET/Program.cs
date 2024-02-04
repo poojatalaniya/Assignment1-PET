@@ -75,6 +75,21 @@ class Program
         VirtualPet pet = new VirtualPet(petType, petName);
 
         Console.WriteLine($"Welcome, {pet.Name} the {pet.Type}!");
-    }
 
-}
+        bool exit = false;
+
+        while (!exit)
+        {
+            Console.WriteLine("\nMain Menu:");
+            Console.WriteLine("1. Feed the pet");
+            Console.WriteLine("2. Play with the pet");
+            Console.WriteLine("3. Let the pet rest");
+            Console.WriteLine("4. Check pet's status");
+            Console.WriteLine("5. Exit");
+
+            Console.Write("Enter your choice (1-5): ");
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+        }
+
+    }
