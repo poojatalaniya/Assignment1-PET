@@ -30,16 +30,18 @@ class VirtualPet            //creating a class for defining datatypes and variab
     }
 
     public void Play()
-    {
+    {   
+        //certain condition for Play
         Console.WriteLine($"{Name} is playing.");
-        Happiness = Math.Min(10, Happiness + 2);           //certain condition for Play
+        Happiness = Math.Min(10, Happiness + 2);           
         Hunger = Math.Min(10, Hunger + 1);
         DisplayStatus();
     }
     public void Rest()
     {
+        //certain condition for Rest
         Console.WriteLine($"{Name} is resting.");
-        Health = Math.Min(10, Health + 2);                  //certain condition for Rest
+        Health = Math.Min(10, Health + 2);                  
         Happiness = Math.Max(0, Happiness - 1);
         DisplayStatus();
     }
@@ -70,10 +72,26 @@ class Program
         Console.Write("Enter the type of your pet (e.g., cat, dog, rabbit): ");
         string petType = Console.ReadLine();
 
+        //Validation for pet type
+        while (string.IsNullOrWhiteSpace(petType) || !petType.All(char.IsLetter))
+        {
+            Console.WriteLine("Invalid name. Please enter a valid name.");
+            Console.Write("Enter your pet's type (e.g., cat, dog, rabbit): ");
+            petType = Console.ReadLine();
+        }
+
         Console.Write("Enter your pet's name: ");
         string petName = Console.ReadLine();
 
-        VirtualPet pet = new VirtualPet(petType, petName,5,5);
+        //validation for pet name
+        while (string.IsNullOrWhiteSpace(petName) || !petName.All(char.IsLetter))
+        {
+            Console.WriteLine("Invalid name. Please enter a valid name.");
+            Console.Write("Enter your pet's name: ");
+            petName = Console.ReadLine();
+        }
+
+        VirtualPet pet = new VirtualPet(petType, petName, 5, 5);
 
         Console.WriteLine($"Welcome, {pet.Name} the {pet.Type}!");
 
