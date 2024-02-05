@@ -13,24 +13,25 @@ class VirtualPet            //creating a class for defining datatypes and variab
 
     public VirtualPet(string type, string name, int hunger, int health)
     {
+        //assigning the values
         Type = type;
         Name = name;
-        Hunger = 5;                                       //assigning the values
+        Hunger = 5;                                       
         Happiness = 5;
         Health = 5;
     }
 
     public void Feed()
-    {
+    {  //certain condition for Feed
         Console.WriteLine($"{Name} is being fed.");
-        Hunger = Math.Max(0, Hunger - 2);                  //certain condition for Feed
+        Hunger = Math.Max(0, Hunger - 2);                  
         Health = Math.Min(10, Health + 1);
         DisplayStatus();
     }
 
     public void Play()
     {
-        Console.WriteLine($"Name is playing.");
+        Console.WriteLine($"{Name} is playing.");
         Happiness = Math.Min(10, Happiness + 2);           //certain condition for Play
         Hunger = Math.Min(10, Hunger + 1);
         DisplayStatus();
@@ -72,7 +73,7 @@ class Program
         Console.Write("Enter your pet's name: ");
         string petName = Console.ReadLine();
 
-        VirtualPet pet = new VirtualPet(petType, petName);
+        VirtualPet pet = new VirtualPet(petType, petName,5,5);
 
         Console.WriteLine($"Welcome, {pet.Name} the {pet.Type}!");
 
@@ -90,6 +91,31 @@ class Program
             Console.Write("Enter your choice (1-5): ");
             int choice = Convert.ToInt32(Console.ReadLine());
 
-        }
+            switch (choice)
+            {
+                case 1:
+                    pet.Feed();
+                    break;
+                case 2:
+                    pet.Play();
+                    break;
+                case 3:
+                    pet.Rest();
+                    break;
+                case 4:
+                    pet.DisplayStatus();
+                    break;
+                case 5:
+                    exit = true;
+                    Console.WriteLine("Exiting the Virtual Pet Simulator. Goodbye!");
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please enter a number between 1 and 5.");
+                    break;
 
+            }
+
+        }
     }
+
+}
