@@ -3,7 +3,9 @@
 //Starting the code for the PET store
 using System;
 
-class VirtualPet            //creating a class for defining datatypes and variables
+
+//creating a class for defining datatypes and variables
+class VirtualPet           
 {
     public string Type { get; set; }
     public string Name { get; set; }
@@ -68,7 +70,7 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Welcome to the Virtual Pet Simulator!");
+        Console.WriteLine("Welcome to the Pet World!");
         Console.Write("Enter the type of your pet (e.g., cat, dog, rabbit): ");
         string petType = Console.ReadLine();
 
@@ -125,7 +127,7 @@ class Program
                     break;
                 case 5:
                     exit = true;
-                    Console.WriteLine("Exiting the Virtual Pet Simulator. Goodbye!");
+                    Console.WriteLine("Exiting the Pet World Goodbye!");
                     break;
                 default:
                     Console.WriteLine("Invalid choice. Please enter a number between 1 and 5.");
